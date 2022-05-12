@@ -1,3 +1,26 @@
 {
-  "user": {}
+  "users": [
+    {
+      "id": 1,
+      "name": "朱喜超"
+    },
+    {
+      "id": 2,
+      "name": "王晨"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "name": "自动摘要",
+      "personId": 1,
+      "origanation": "nlp组"
+    },
+    {
+      "id": 2,
+      "name": "图像处理",
+      "personId": 2,
+      "origanation": "openCV组"
+    }
+  ]
 }
