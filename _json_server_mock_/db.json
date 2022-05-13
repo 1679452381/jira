@@ -2,11 +2,17 @@
   "users": [
     {
       "id": 1,
-      "name": "朱喜超"
+      "name": "朱喜超",
+      "email": "",
+      "title": "",
+      "organization": ""
     },
     {
       "id": 2,
-      "name": "王晨"
+      "name": "王晨",
+      "email": "",
+      "title": "",
+      "organization": ""
     }
   ],
   "projects": [
@@ -14,13 +20,15 @@
       "id": 1,
       "name": "自动摘要",
       "personId": 1,
-      "origanation": "nlp组"
+      "pin": "",
+      "organization": "nlp组"
     },
     {
       "id": 2,
       "name": "图像处理",
       "personId": 2,
-      "origanation": "openCV组"
+      "pin": "",
+      "organization": "openCV组"
     }
   ]
 }
