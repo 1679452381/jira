@@ -13,6 +13,11 @@
       "email": "",
       "title": "",
       "organization": ""
+    },
+    {
+      "email": "admin@183.com",
+      "password": "$2a$10$ajkNtBL452SwAPlTYiO9WuE4Zf00QLrU14LpshUKIqDrrncchxgHC",
+      "id": 3
     }
   ],
   "projects": [

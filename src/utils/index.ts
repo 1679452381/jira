@@ -28,7 +28,7 @@ export const useMount = (fn: () => void) => {
 
 
 // * 防抖
-export const useDebounce = (value: unknown, delay?: number): any => {
+export const useDebounce = <T>(value: T, delay?: number): any => {
     const [debouncedValue, setDebouncedValue] = useState(value)
     useEffect(() => {
         // 每次value变化 就设置一个定时器
