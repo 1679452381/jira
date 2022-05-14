@@ -1,27 +1,31 @@
 import React, { FormEvent } from 'react'
-import { login, register } from '../../utils/auth_provider'
+import { useAuth } from '../../context/auth_context'
 
 
-const apiUrl = process.env.REACT_APP_API_URL
 
 export default function LoginScreens() {
 
+    const { user, login } = useAuth()
 
 
     // --middlewares _json_server_mock_/middleware.js 
     // --c _json_server_mock_/json_sever_config.json
     const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
+        //阻止默认事件
         evt.preventDefault()
 
         const email = (evt.currentTarget.elements[0] as HTMLFormElement).value
         const password = (evt.currentTarget.elements[1] as HTMLFormElement).value
+
         login({ email, password })
-        console.log({ email, password });
 
     }
 
     return (
         <form onSubmit={handleSubmit}>
+            {
+                user ? <div>{user.name}</div> : ''
+            }
             <div>
                 <label htmlFor="">
                     <span>账号</span>

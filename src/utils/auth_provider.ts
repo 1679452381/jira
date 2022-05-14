@@ -1,3 +1,4 @@
+import { User } from "../screens/project-list/search_panel"
 
 const authLocalStorageKey = '__AUTH_TOKEN__'
 
@@ -5,22 +6,19 @@ export const getItem = () => window.localStorage.getItem(authLocalStorageKey)
 
 interface Response {
     accessToken: string,
-    user: {
-        email: string
-        id: number
-    }
+    user: User
 }
 
 export const handleUserResponse = (response: Response) => {
     window.localStorage.setItem(authLocalStorageKey, response.accessToken || '')
-    return response
+    return response.user
 }
 
 const apiUrl = process.env.REACT_APP_API_URL
 
 
 export const login = (data: { email: string, password: string }) => {
-    fetch(`${apiUrl}/login`, {
+    return fetch(`${apiUrl}/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -29,16 +27,19 @@ export const login = (data: { email: string, password: string }) => {
     }).then(
         async response => {
             if (response.ok) {
-                handleUserResponse(await response.json())
+                return handleUserResponse(await response.json())
+            } else {
+                return Promise.reject(data)
             }
         })
 }
 
-export const logout = () => window.localStorage.removeItem(authLocalStorageKey)
+export const logout = async () => window.localStorage.removeItem(authLocalStorageKey)
+
 
 
 export const register = (data: { name: string, email: string, password: string }) => {
-    fetch(`${apiUrl}/register`, {
+    return fetch(`${apiUrl}/register`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -47,8 +48,9 @@ export const register = (data: { name: string, email: string, password: string }
     }).then(
         async response => {
             if (response.ok) {
-                handleUserResponse(await response.json())
+                return handleUserResponse(await response.json())
+            } else {
+                return Promise.reject(data)
             }
         })
 }
-

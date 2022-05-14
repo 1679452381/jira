@@ -5,7 +5,7 @@ import ProjectList from './screens/project-list';
 function App() {
   return (
     <div >
-      <ProjectList />
+      {/* <ProjectList /> */}
       <LoginScreens />
     </div>
   );
