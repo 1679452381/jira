@@ -3,7 +3,7 @@ import { useAuth } from '../context/auth_context'
 
 
 
-export default function LoginScreens() {
+export default function RegisterScreen() {
 
     const { user, register } = useAuth()
 
@@ -13,7 +13,7 @@ export default function LoginScreens() {
 
         const email = (evt.currentTarget.elements[0] as HTMLFormElement).value
         const password = (evt.currentTarget.elements[1] as HTMLFormElement).value
-        const name = (evt.currentTarget.elements[0] as HTMLFormElement).value
+        const name = (evt.currentTarget.elements[2] as HTMLFormElement).value
 
         register({ name, email, password })
 

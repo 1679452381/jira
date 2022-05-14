@@ -1,5 +1,6 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react'
 import { User } from '../type/user'
+import { useMount } from '../utils'
 import * as auth from '../utils/auth_provider'
 
 const AuthContext = createContext<{
@@ -8,6 +9,7 @@ const AuthContext = createContext<{
     register: (form: RegisterForm) => Promise<void>
     logout: () => Promise<void>
 } | undefined>(undefined)
+
 // React DevTools 使用该字符串来确定 context 要显示的内容
 AuthContext.displayName = 'AuthContext'
 
@@ -28,6 +30,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const login = (form: AuthForm) => auth.login(form).then(user => setUser(user))
     const register = (form: RegisterForm) => auth.register(form).then(user => setUser(user))
     const logout = () => auth.logout().then(() => setUser(null))
+
+    //维持登陆状态
+    useMount(() => {
+        const user = JSON.parse(auth.getUser() || '')
+        setUser(user)
+    })
 
     return <AuthContext.Provider children={children} value={{ user, login, logout, register }} />
 }

@@ -1,8 +1,10 @@
 import { User } from "../type/user"
 
-const authLocalStorageKey = '__AUTH_TOKEN__'
+export const authLocalStorageKey = '__AUTH_TOKEN__'
+export const authUserLocalStorageKey = '__AUTH_USER__'
 
-export const getItem = () => window.localStorage.getItem(authLocalStorageKey)
+export const getToken = () => window.localStorage.getItem(authLocalStorageKey) || undefined
+export const getUser = () => window.localStorage.getItem(authUserLocalStorageKey) || undefined
 
 interface Response {
     accessToken: string,
@@ -11,6 +13,7 @@ interface Response {
 
 export const handleUserResponse = (response: Response) => {
     window.localStorage.setItem(authLocalStorageKey, response.accessToken || '')
+    window.localStorage.setItem(authUserLocalStorageKey, JSON.stringify(response.user) || '')
     return response.user
 }
 
@@ -34,7 +37,10 @@ export const login = (data: { email: string, password: string }) => {
         })
 }
 
-export const logout = async () => window.localStorage.removeItem(authLocalStorageKey)
+export const logout = async () => {
+    window.localStorage.removeItem(authLocalStorageKey)
+    window.localStorage.removeItem(authUserLocalStorageKey)
+}
 
 
 

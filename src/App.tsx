@@ -1,7 +1,6 @@
 import React from 'react';
 import AuthenticatedScreen from './authenticated-app';
 import { useAuth } from './context/auth_context';
-import LoginScreens from './screens/login';
 import UnAuthenticatedScreen from './unauthenticated-app';
 
 

@@ -7,6 +7,12 @@
       "name": "王晨",
       "title": "",
       "organization": ""
+    },
+    {
+      "email": "123@qq.com",
+      "password": "$2a$10$dD12R934Govia0E9R9Eh2u0ricCrG7mfSqdh3V1TjAA/VHKrJV8x.",
+      "name": "朱喜超",
+      "id": 2
     }
   ],
   "projects": [
@@ -16,6 +22,13 @@
       "personId": 1,
       "pin": "",
       "organization": "openCV组"
+    },
+    {
+      "id": 2,
+      "name": "自然语言处理",
+      "personId": 2,
+      "pin": "",
+      "organization": "nlp组"
     }
   ]
 }
