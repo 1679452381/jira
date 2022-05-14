@@ -33,8 +33,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     //维持登陆状态
     useMount(() => {
-        const user = JSON.parse(auth.getUser() || '')
-        setUser(user)
+        const user = auth.getUser()
+        if (user) {
+            setUser(JSON.parse(user))
+        }
     })
 
     return <AuthContext.Provider children={children} value={{ user, login, logout, register }} />
