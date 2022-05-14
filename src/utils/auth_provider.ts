@@ -1,4 +1,4 @@
-import { User } from "../screens/project-list/search_panel"
+import { User } from "../type/user"
 
 const authLocalStorageKey = '__AUTH_TOKEN__'
 

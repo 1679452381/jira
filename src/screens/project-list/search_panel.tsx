@@ -1,12 +1,5 @@
 import React from "react";
-
-
-export interface User {
-  id: string,
-  name: string,
-  email: string,
-  organization: string,
-}
+import { User } from "../../type/user";
 
 interface SearchPanelProps {
   param: {

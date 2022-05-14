@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react'
-import { User } from '../screens/project-list/search_panel'
+import { User } from '../type/user'
 import * as auth from '../utils/auth_provider'
 
 const AuthContext = createContext<{
