@@ -4,6 +4,7 @@ import SearchPanel from "./search_panel";
 
 import { CleanObj, useDebounce, useMount } from "../../utils";
 import { useHttp } from "../../utils/http";
+import styled from "@emotion/styled";
 
 
 export default function ProjectList() {
@@ -28,9 +29,15 @@ export default function ProjectList() {
   });
 
   return (
-    <div>
+    <Container>
+      <h2>项目列表</h2>
       <SearchPanel param={param} setParam={setParam} users={users} />
       <List list={list} users={users} />
-    </div>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  padding: 3.2rem;
+`
+

@@ -1,15 +1,17 @@
-// @import '~antd/dist/antd.less';
-@import '~antd/dist/antd.dark.less';
+@import '~antd/dist/antd.less';
+// @import '~antd/dist/antd.dark.less';
 
 html {
     /* rem 相对于根元素 */
     /* em 相对于父元素 */
     /* rem = 16px *62.5% = 10px*/
     font-size: 62.5%;
-  }
+}
   
   /* vh = viewport height */
   html body #root .App {
     min-height: 100vh;
     justify-content: space-between;
+    box-sizing: border-box;
+    margin: 0 1rem;
   }
