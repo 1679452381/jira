@@ -1,46 +1,51 @@
+import { Button, Form, Input } from 'antd'
 import React, { FormEvent } from 'react'
 import { useAuth } from '../context/auth_context'
-
+import {
+    UserOutlined, LockOutlined
+} from '@ant-design/icons';
 
 
 export default function LoginScreen() {
 
     const { user, login } = useAuth()
 
+    // const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
+    //     //阻止默认事件
+    //     evt.preventDefault()
 
-    // --middlewares _json_server_mock_/middleware.js 
-    // --c _json_server_mock_/json_sever_config.json
-    const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
-        //阻止默认事件
-        evt.preventDefault()
+    //     const email = (evt.currentTarget.elements[0] as HTMLFormElement).value
+    //     const password = (evt.currentTarget.elements[1] as HTMLFormElement).value
 
-        const email = (evt.currentTarget.elements[0] as HTMLFormElement).value
-        const password = (evt.currentTarget.elements[1] as HTMLFormElement).value
+    //     login({ email, password })
 
-        login({ email, password })
+    // }
 
+    const handleSubmit = (values: { email: string, password: string }) => {
+        login(values)
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            {
-                user ? <div>{user.name}</div> : ''
-            }
-            <div>
-                <label htmlFor="">
-                    <span>账号</span>
-                    <input type="text" placeholder='账号' />
-                </label>
-            </div>
-            <div>
-                <label htmlFor="">
-                    <span>密码</span>
-                    <input type="password" placeholder='密码' />
-                </label>
-            </div>
-            <div>
-                <button type="submit">登录</button>
-            </div>
-        </form>
+        <Form onFinish={handleSubmit}>
+            <Form.Item
+                name={'email'}
+                rules={[{ required: true, message: '请输入邮箱' }]}  >
+                <Input
+                    prefix={<UserOutlined className="site-form-item-icon" />}
+                    placeholder='请输入邮箱' />
+            </Form.Item>
+            <Form.Item
+                name={'password'}
+                rules={[{ required: true, message: '请输入密码' }]} >
+                <Input.Password
+                    prefix={<LockOutlined className="site-form-item-icon" />}
+                    placeholder='请输入密码'
+
+                />
+            </Form.Item>
+            <Form.Item  >
+                <Button style={{ width: "100%" }} type='primary' htmlType='submit' >登录</Button>
+            </Form.Item>
+        </Form>
     )
 }

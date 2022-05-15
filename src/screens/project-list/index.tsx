@@ -17,7 +17,7 @@ export default function ProjectList() {
   const [users, setUsers] = useState([]);
   const [list, setList] = useState([]);
 
-  const debouncedParam = useDebounce(param, 1000);
+  const debouncedParam = useDebounce(param, 300);
 
   useEffect(() => {
     client('projects', { data: CleanObj(debouncedParam) }).then(setList)

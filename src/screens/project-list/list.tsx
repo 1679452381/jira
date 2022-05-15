@@ -1,3 +1,5 @@
+import { render } from "@testing-library/react";
+import { Input, Table } from "antd";
 import React from "react";
 import { Project } from "../../type/projcet";
 import { User } from "../../type/user";
@@ -10,25 +12,21 @@ interface ListProps {
 
 export default function List({ list, users }: ListProps) {
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>项目名称</th>
-            <th>负责人</th>
-          </tr>
-        </thead>
-        <tbody>
-          {list.map((project) => (
-            <tr key={project.id}>
-              <td>{project.name}</td>
-              <td>
-                {users.find((user) => user.id === project.personId)?.name}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <Table rowKey={'id'} dataSource={list} columns={
+      [{
+        title: "项目名称",
+        dataIndex: 'name',
+        key: 'name',
+        sorter: (a, b) => a.name.localeCompare(b.name)
+      },
+      {
+        title: "负责人",
+        render: (project, record, index) => {
+          return <a > {users.find((user) => user.id === project.personId)?.name}</a>
+        }
+      }
+      ]
+    } />
+
   );
 }

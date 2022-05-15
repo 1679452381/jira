@@ -13,6 +13,18 @@
       "password": "$2a$10$dD12R934Govia0E9R9Eh2u0ricCrG7mfSqdh3V1TjAA/VHKrJV8x.",
       "name": "朱喜超",
       "id": 2
+    },
+    {
+      "email": "admin@163.com",
+      "password": "$2a$10$mU3H3BfiIDUbbLZqD7alzun0.34AwH53dLDlv9jseKFwcpCw0YBqu",
+      "name": "马云",
+      "id": 3
+    },
+    {
+      "email": "zhangzhi@163.com",
+      "password": "$2a$10$e032hehPrdAVknUgcsCtbe9j3twQ48vyf1d5MAuhNgHA/undxhVuG",
+      "name": "张志",
+      "id": 4
     }
   ],
   "projects": [
