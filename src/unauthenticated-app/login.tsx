@@ -2,15 +2,16 @@ import { Button, Form, Input, message } from 'antd'
 import React from 'react'
 import { useAuth } from '../context/auth_context'
 import {
-    UserOutlined, LockOutlined
+    UserOutlined,
+    LockOutlined
 } from '@ant-design/icons';
 import { useAsync } from '../utils/use-async';
 
-const loginResult = {
-    'Cannot find user': '该用户不存在',
-    'Incorrect password': '密码错误',
-    'Email format is invalid': "请输入有效邮箱"
-}
+// const loginResult = {
+//     'Cannot find user': '该用户不存在',
+//     'Incorrect password': '密码错误',
+//     'Email format is invalid': "请输入有效邮箱"
+// }
 export default function LoginScreen({ onError }: { onError: (error: Error) => void }) {
 
     const { login } = useAuth()
