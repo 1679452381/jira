@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 
+
 const isFalsy = (value: string | number) => value === 0 ? false : !value
 
 export const CleanObj = (object: object) => {
@@ -20,9 +21,10 @@ export const CleanObj = (object: object) => {
 // ? 自定义hook
 
 // * 在页面加载时 运行一次
-export const useMount = (fn: () => void) => {
+export const useMount = (callback: () => void) => {
     useEffect(() => {
-        fn()
+        callback()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 }
 

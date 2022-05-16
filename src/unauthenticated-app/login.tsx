@@ -1,5 +1,5 @@
 import { Button, Form, Input } from 'antd'
-import React, { FormEvent } from 'react'
+import React from 'react'
 import { useAuth } from '../context/auth_context'
 import {
     UserOutlined, LockOutlined
@@ -8,7 +8,7 @@ import {
 
 export default function LoginScreen() {
 
-    const { user, login } = useAuth()
+    const { login } = useAuth()
 
     // const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     //     //阻止默认事件

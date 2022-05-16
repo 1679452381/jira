@@ -1,5 +1,5 @@
 import { Button, Form, Input } from 'antd'
-import React, { FormEvent } from 'react'
+import React from 'react'
 import { useAuth } from '../context/auth_context'
 import {
     UserOutlined, LockOutlined, MailOutlined
@@ -8,7 +8,7 @@ import {
 
 export default function RegisterScreen() {
 
-    const { user, register } = useAuth()
+    const { register } = useAuth()
 
 
     const handleSubmit = (vaules: { name: string, email: string, password: string }) => {
