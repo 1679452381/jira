@@ -15,7 +15,16 @@ const defaultInitralState: State<null> = {
     stat: 'idle'
 }
 
-export const useAsync = <D>(initialState?: State<D>) => {
+// *配置参数 是否手动抛出错误
+const defaultConfig = {
+    throwError: false
+}
+
+export const useAsync = <D>(initialState?: State<D>, initialConfig?: typeof defaultConfig) => {
+    const config = {
+        ...defaultConfig,
+        ...initialConfig
+    }
     const [state, setState] = useState({
         ...defaultInitralState,
         ...initialState
@@ -43,7 +52,10 @@ export const useAsync = <D>(initialState?: State<D>) => {
             setDate(data)
             return data
         }).catch(error => {
+
             setError(error)
+            if (config.throwError)
+                return Promise.reject(error)
             return error
         })
     }

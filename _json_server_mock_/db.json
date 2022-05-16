@@ -25,6 +25,18 @@
       "password": "$2a$10$e032hehPrdAVknUgcsCtbe9j3twQ48vyf1d5MAuhNgHA/undxhVuG",
       "name": "张志",
       "id": 4
+    },
+    {
+      "email": "liqiming@qq.com",
+      "password": "$2a$10$QNJWpAZbiIrKEA2IU082w.LVtvCj3H/y4xj2PmBtROnHneyBNEmti",
+      "name": "李启明",
+      "id": 5
+    },
+    {
+      "email": "wangzhihao@qq.com",
+      "password": "$2a$10$6mplpRhOF8aMoUnxzaVUi.HpxL4WXgVo5hcTDLcQJiFDKJkDUiewa",
+      "name": "王志豪",
+      "id": 6
     }
   ],
   "projects": [
