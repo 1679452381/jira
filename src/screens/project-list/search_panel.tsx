@@ -24,7 +24,7 @@ export default function SearchPanel({ param, setParam, users }: SearchPanelProps
               name: evt.target.value,
             })
           }
-          placeholder={'项目名称/负责人'}
+          placeholder={'项目名称'}
         />
       </Form.Item>
       <Form.Item>

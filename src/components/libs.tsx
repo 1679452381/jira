@@ -27,11 +27,12 @@ export const FullPageErrorFallback = ({ error }: { error: Error | null }) => {
 };
 
 //类型守卫
-const isError = (value: any): value is Error => value?.message;
+const isError = (error: any): error is Error => error.meseage
 
-export const ErrorBox = ({ error }: { error: unknown }) => {
+
+const ErrorBox = ({ error }: { error: unknown }) => {
     if (isError(error)) {
-        return <Typography.Text type="danger">{error?.message}</Typography.Text>;
+        return <Typography.Text type="danger">{error?.message}</Typography.Text>
     }
-    return null;
-};
+    return null
+}

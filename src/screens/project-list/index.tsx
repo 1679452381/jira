@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import List from "./list";
 import SearchPanel from "./search_panel";
 
-import { useDebounce } from "../../utils";
+import { useDebounce, useDocumentTitle } from "../../utils";
 import styled from "@emotion/styled";
 
 import { useProjects } from "./project";
@@ -11,6 +11,7 @@ import { useUsers } from "./users";
 
 export default function ProjectList() {
 
+  useDocumentTitle('项目列表')
 
   const [param, setParam] = useState({
     name: "",
