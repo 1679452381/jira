@@ -6,6 +6,7 @@ import {
     LockOutlined
 } from '@ant-design/icons';
 import { useAsync } from '../utils/use-async';
+import { useNavigate } from 'react-router';
 
 // const loginResult = {
 //     'Cannot find user': '该用户不存在',
@@ -17,6 +18,8 @@ export default function LoginScreen({ onError }: { onError: (error: Error) => vo
     const { login } = useAuth()
     const { run, isLoading } = useAsync(undefined, { throwError: true })
 
+    // const navigate = useNavigate()
+
     const handleSubmit = async (values: { email: string, password: string }) => {
 
         // ! try catch 不能直接捕获到异步函数 Promise 抛出的错误 要加 async await
@@ -25,6 +28,9 @@ export default function LoginScreen({ onError }: { onError: (error: Error) => vo
         try {
             await run(login(values))
             message.success('登录成功')
+            // //跳转路由
+            // navigate('/projects')
+
         } catch (error: any) {
             // * unkonw 不能赋值给其他类型
             onError(new Error(error))

@@ -1,5 +1,6 @@
 import { Button, Table, TableProps } from "antd";
 import React from "react";
+import { Link } from "react-router-dom";
 import { Project } from "../../type/projcet";
 import { User } from "../../type/user";
 
@@ -17,9 +18,11 @@ export default function List({ users, ...props }: ListProps) {
     <Table style={{ marginTop: "3.2rem" }} rowKey={'id'} columns={
       [{
         title: "项目名称",
-        dataIndex: 'name',
         key: 'name',
-        sorter: (a, b) => a.name.localeCompare(b.name)
+        sorter: (a, b) => a.name.localeCompare(b.name),
+        render: (value, project) => {
+          return <Link to={String(project.id)}>{project.name}</Link>
+        }
       },
       {
         title: "部门",
@@ -32,7 +35,7 @@ export default function List({ users, ...props }: ListProps) {
       },
       {
         title: "负责人",
-        render: (project, record, index) => {
+        render: (value, project) => {
           return <Button type="link" > {users.find((user) => user.id === project.personId)?.name}</Button>
         }
       }

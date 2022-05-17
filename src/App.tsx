@@ -6,6 +6,8 @@ import './App.less'
 import { ErrorBoundary } from './components/error-bounray';
 import { FullPageErrorFallback } from './components/libs';
 
+import { BrowserRouter } from 'react-router-dom'
+
 
 function App() {
 
@@ -13,9 +15,11 @@ function App() {
 
   return (
     <ErrorBoundary fallbackRender={FullPageErrorFallback} >
-      {
-        user ? <AuthenticatedScreen /> : <UnAuthenticatedScreen />
-      }
+      <BrowserRouter>
+        {
+          user ? <AuthenticatedScreen /> : <UnAuthenticatedScreen />
+        }
+      </BrowserRouter>
     </ErrorBoundary>
   );
 }

@@ -4,9 +4,29 @@ import React, { useState } from 'react'
 import { useAuth } from '../context/auth_context'
 import ProjectList from '../screens/project-list'
 import { ReactComponent as LogoSvg } from '../assets/svg/logo.svg'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import ProjectScreen from '../screens/project'
+import { resetRoute } from '../utils'
 
 
 export default function AuthenticatedScreen() {
+
+
+    return (
+        <Container>
+            <PageHeader />
+            <Main >
+                <Routes>
+                    <Route path={'/projects'} element={<ProjectList />} />
+                    <Route path={'/projects/:projectId/*'} element={<ProjectScreen />} />
+                    <Route index element={<Navigate to={"projects"} replace={false} />} />
+                </Routes>
+            </Main>
+        </Container>
+    )
+}
+
+const PageHeader = () => {
     const { user, logout } = useAuth()
     const [isModalVisible, setIsModalVisible] = useState(false);
     const showModal = () => {
@@ -40,38 +60,33 @@ export default function AuthenticatedScreen() {
         },
 
     ];
-    return (
-        <Container>
-            <Header>
-                <HeaderLeft >
-                    <LogoSvg fill='currentColor' color='#fadb14' height={'4.5rem'} />
-                    <HeaderLeftItem>项目</HeaderLeftItem>
-                    <HeaderLeftItem>用户</HeaderLeftItem>
-                </HeaderLeft>
-                <HeaderRight>
-                    {/* <button onClick={logout}>退出账号</button> */}
-                    <HeaderRightItem>
-                        <Avatar src="https://joeschmoe.io/api/v1/random" />
-                    </HeaderRightItem>
-                    <HeaderRightItem>
-                        <Dropdown
-                            overlay={<Menu items={items} />}
-                        >
-                            <Button type='link' onClick={e => e.preventDefault()}>
-                                Hi,{user?.name}
-                            </Button>
-                        </Dropdown>
+    return <Header>
+        <HeaderLeft >
+            <Button type='link' onClick={resetRoute} style={{ height: '5rem' }} >
+                <LogoSvg fill='currentColor' color='#fadb14' height={'4.5rem'} />
+            </Button>
 
-                    </HeaderRightItem>
-                </HeaderRight>
-            </Header>
-            <Main >
-                <ProjectList />
-            </Main>
-        </Container>
-    )
+            <HeaderLeftItem>项目</HeaderLeftItem>
+            <HeaderLeftItem>用户</HeaderLeftItem>
+        </HeaderLeft>
+        <HeaderRight>
+            {/* <button onClick={logout}>退出账号</button> */}
+            <HeaderRightItem>
+                <Avatar src="https://joeschmoe.io/api/v1/random" />
+            </HeaderRightItem>
+            <HeaderRightItem>
+                <Dropdown
+                    overlay={<Menu items={items} />}
+                >
+                    <Button type='link' onClick={e => e.preventDefault()}>
+                        Hi,{user?.name}
+                    </Button>
+                </Dropdown>
+
+            </HeaderRightItem>
+        </HeaderRight>
+    </Header >
 }
-
 
 
 const Container = styled.div`
