@@ -18,7 +18,7 @@ export default function LoginScreen({ onError }: { onError: (error: Error) => vo
     const { login } = useAuth()
     const { run, isLoading } = useAsync(undefined, { throwError: true })
 
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     const handleSubmit = async (values: { email: string, password: string }) => {
 
@@ -29,7 +29,7 @@ export default function LoginScreen({ onError }: { onError: (error: Error) => vo
             await run(login(values))
             message.success('登录成功')
             // //跳转路由
-            // navigate('/projects')
+            navigate('/projects')
 
         } catch (error: any) {
             // * unkonw 不能赋值给其他类型

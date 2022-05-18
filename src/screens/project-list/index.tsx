@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import List from "./list";
 import SearchPanel from "./search_panel";
 
@@ -7,22 +7,26 @@ import styled from "@emotion/styled";
 
 import { useProjects } from "./project";
 import { useUsers } from "./users";
+import { useUrlParams } from "../../utils/url";
 
 
 export default function ProjectList() {
 
-  useDocumentTitle('项目列表')
+  useDocumentTitle('项目列表', false)
 
-  const [param, setParam] = useState({
-    name: "",
-    personId: "",
-  });
+  // const [, setParam] = useState({
+  //   name: "",
+  //   personId: "",
+  // });
+  const [param, setParam] = useUrlParams(['name', 'personId'])
+
 
   const debouncedParam = useDebounce(param, 300);
 
   const { isLoading, data: list } = useProjects(debouncedParam)
 
   const { data: users } = useUsers()
+
 
   return (
     <Container>

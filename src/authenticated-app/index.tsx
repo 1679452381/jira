@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { useAuth } from '../context/auth_context'
 import ProjectList from '../screens/project-list'
 import { ReactComponent as LogoSvg } from '../assets/svg/logo.svg'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom'
 import ProjectScreen from '../screens/project'
 import { resetRoute } from '../utils'
 
@@ -29,11 +29,15 @@ export default function AuthenticatedScreen() {
 const PageHeader = () => {
     const { user, logout } = useAuth()
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const navigate = useNavigate()
+
     const showModal = () => {
         setIsModalVisible(true);
     };
     const handleOk = () => {
         logout()
+        //跳转路由
+        navigate('/login', { replace: true })
         setIsModalVisible(false);
     };
 

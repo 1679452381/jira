@@ -4,6 +4,8 @@ import React, { useState } from 'react'
 import LoginScreen from './login'
 import RegisterScreen from './register'
 import { ReactComponent as LogoSvg } from '../assets/svg/logo.svg'
+import { Route, Routes } from 'react-router'
+import { Link } from 'react-router-dom'
 
 
 
@@ -20,14 +22,22 @@ export default function UnAuthenticatedScreen() {
             <ShadowCard >
                 <Title >{isRegister ? "请注册" : "请登陆"}</Title>
                 {error ? <Typography.Text type='danger'>{error.message}</Typography.Text> : null}
+                <Routes>
+                    <Route path='/login' element={<LoginScreen onError={setError} />} />
+                    <Route path='/register' element={<RegisterScreen onError={setError} />} />
+                </Routes>
                 {/* {error ? <Alert message={error.message} type="error" /> : null} */}
-                {
+                {/* {
                     isRegister ? <RegisterScreen onError={setError} /> : <LoginScreen onError={setError} />
-                }
+                } */}
                 <Divider />
-                <Button type='link' onClick={() => setIsRegister(!isRegister)}>
+                {
+                    isRegister ? <Link to={'/login'} onClick={() => setIsRegister(!isRegister)}>已有帐号，去登陆</Link>
+                        : <Link to={'/register'} onClick={() => setIsRegister(!isRegister)}>已有帐号，去登陆</Link>
+                }
+                {/* <Button type='link' onClick={() => setIsRegister(!isRegister)}>
                     {isRegister ? "已有帐号，去登陆" : "还没有账号？点击注册"}
-                </Button>
+                </Button> */}
             </ShadowCard>
         </Container>
     )
