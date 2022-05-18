@@ -5,9 +5,10 @@ import SearchPanel from "./search_panel";
 import { useDebounce, useDocumentTitle } from "../../utils";
 import styled from "@emotion/styled";
 
-import { useProjects } from "./project";
-import { useUsers } from "./users";
+import { useProjects } from "../../utils/project";
+import { useUsers } from "../../utils/users";
 import { useUrlParams } from "../../utils/url";
+import { useProjectSearchParams } from "./utils";
 
 
 export default function ProjectList() {
@@ -18,11 +19,9 @@ export default function ProjectList() {
   //   name: "",
   //   personId: "",
   // });
-  const [param, setParam] = useUrlParams(['name', 'personId'])
 
-
+  const [param, setParam] = useProjectSearchParams()
   const debouncedParam = useDebounce(param, 300);
-
   const { isLoading, data: list } = useProjects(debouncedParam)
 
   const { data: users } = useUsers()
