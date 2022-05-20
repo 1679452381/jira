@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Button, Card, Divider, Typography } from 'antd'
+import { Card, Divider, Typography } from 'antd'
 import React, { useState } from 'react'
 import LoginScreen from './login'
 import RegisterScreen from './register'
@@ -23,8 +23,10 @@ export default function UnAuthenticatedScreen() {
                 <Title >{isRegister ? "请注册" : "请登陆"}</Title>
                 {error ? <Typography.Text type='danger'>{error.message}</Typography.Text> : null}
                 <Routes>
+                    <Route path='/' element={<LoginScreen onError={setError} />} />
                     <Route path='/login' element={<LoginScreen onError={setError} />} />
                     <Route path='/register' element={<RegisterScreen onError={setError} />} />
+                    <Route index element={<LoginScreen onError={setError} />} />
                 </Routes>
                 {/* {error ? <Alert message={error.message} type="error" /> : null} */}
                 {/* {

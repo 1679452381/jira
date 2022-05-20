@@ -7,7 +7,6 @@ import styled from "@emotion/styled";
 
 import { useProjects } from "../../utils/project";
 import { useUsers } from "../../utils/users";
-import { useUrlParams } from "../../utils/url";
 import { useProjectSearchParams } from "./utils";
 
 
@@ -22,7 +21,7 @@ export default function ProjectList() {
 
   const [param, setParam] = useProjectSearchParams()
   const debouncedParam = useDebounce(param, 300);
-  const { isLoading, data: list } = useProjects(debouncedParam)
+  const { isLoading, data: list, retry } = useProjects(debouncedParam)
 
   const { data: users } = useUsers()
 
@@ -31,7 +30,7 @@ export default function ProjectList() {
     <Container>
       <h2>项目列表</h2>
       <SearchPanel param={param} setParam={setParam} users={users || []} />
-      <List dataSource={list || []} loading={isLoading} users={users || []} />
+      <List refresh={retry} dataSource={list || []} loading={isLoading} users={users || []} />
     </Container>
   );
 }

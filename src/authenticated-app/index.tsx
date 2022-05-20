@@ -86,7 +86,6 @@ const PageHeader = () => {
                         Hi,{user?.name}
                     </Button>
                 </Dropdown>
-
             </HeaderRightItem>
         </HeaderRight>
     </Header >
