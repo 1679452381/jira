@@ -1,6 +1,7 @@
 //? 处理 loading error
 
 import { useState } from "react"
+import { useMountRef } from "."
 
 
 interface State<D> {
@@ -42,6 +43,8 @@ export const useAsync = <D>(initialState?: State<D>, initialConfig?: typeof defa
         stat: 'error'
     })
 
+    const mountRef = useMountRef()
+
     const [retry, setretry] = useState(() => () => { })
 
     // *发起异步请求
@@ -56,7 +59,8 @@ export const useAsync = <D>(initialState?: State<D>, initialConfig?: typeof defa
         })
         setState({ ...state, stat: "loading" })
         return promise.then(data => {
-            setDate(data)
+            if (mountRef.current)
+                setDate(data)
             return data
         }).catch(error => {
 
